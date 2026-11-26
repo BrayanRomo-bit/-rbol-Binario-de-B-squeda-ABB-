@@ -129,7 +129,10 @@ namespace Árbol_Binario_de_Búsqueda__ABB_
 
         private void btnEjecutarPruebas_Click(object? sender, EventArgs e)
         {
-            ActualizarVista("Modulo de pruebas pendiente.");
+            (bool exito, string reporte) = PruebasABB.EjecutarTodas();
+            string titulo = exito ? "Pruebas aprobadas" : "Pruebas con fallos";
+            MessageBox.Show(this, reporte, titulo, MessageBoxButtons.OK, exito ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
+            ActualizarVista(exito ? "Todas las pruebas de integridad fueron aprobadas." : "Se detectaron fallos en las pruebas.");
         }
 
         private void pbArbol_Paint(object? sender, PaintEventArgs e)

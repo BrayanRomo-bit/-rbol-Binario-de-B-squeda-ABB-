@@ -2,16 +2,19 @@ namespace Árbol_Binario_de_Búsqueda__ABB_
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
-        static void Main()
+        static int Main(string[] args)
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            if (args.Length > 0 && args[0] == "--test")
+            {
+                (bool exito, string reporte) = PruebasABB.EjecutarTodas();
+                Console.WriteLine(reporte);
+                return exito ? 0 : 1;
+            }
+
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+            return 0;
         }
     }
 }
