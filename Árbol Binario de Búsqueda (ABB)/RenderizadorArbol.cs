@@ -23,20 +23,25 @@ namespace Árbol_Binario_de_Búsqueda__ABB_
             }
 
             int altura = Math.Max(1, arbol.ObtenerAltura());
-            int margenX = 28;
-            int margenY = 28;
-            float altoDisponible = Math.Max(60F, area.Height - margenY * 2);
-            float pasoVertical = altura > 1 ? altoDisponible / (altura - 1) : 0F;
-            float radio = Math.Clamp(Math.Min(area.Width / 28F, pasoVertical > 0 ? pasoVertical * 0.34F : 22F), 12F, 24F);
+            float margenX = 24F;
+            float margenY = 20F;
+            float radio = Math.Clamp(Math.Min(area.Width / 40F, area.Height / (altura * 3.4F)), 9F, 16F);
+            float altoDisponible = Math.Max(20F, area.Height - (margenY + radio) * 2F);
+            float pasoVertical = altura > 1 ? Math.Min(64F, altoDisponible / (altura - 1)) : 0F;
+            float altoTotal = (altura - 1) * pasoVertical;
+            float yInicial = Math.Max(margenY + radio, (area.Height - altoTotal) / 2F);
+            float anchoMaximo = Math.Min(area.Width - (margenX + radio) * 2F, Math.Max(240F, (float)Math.Pow(2, Math.Min(altura, 6)) * radio * 2.1F));
+            float xInicio = (area.Width - anchoMaximo) / 2F;
+            float xFin = xInicio + anchoMaximo;
 
             Dictionary<NodoABB, PointF> posiciones = new Dictionary<NodoABB, PointF>();
-            CalcularPosiciones(arbol.Raiz, margenX, area.Width - margenX, margenY + radio, pasoVertical, 0, posiciones);
+            CalcularPosiciones(arbol.Raiz, xInicio, xFin, yInicial, pasoVertical, 0, posiciones);
 
-            using Pen lapizArista = new Pen(Color.FromArgb(120, 130, 145), 1.8F);
-            using Pen lapizAristaRuta = new Pen(Color.FromArgb(217, 119, 6), 2.6F);
+            using Pen lapizArista = new Pen(Color.FromArgb(120, 130, 145), 1.5F);
+            using Pen lapizAristaRuta = new Pen(Color.FromArgb(217, 119, 6), 2.2F);
             DibujarAristas(g, arbol.Raiz, posiciones, rutaResaltada, lapizArista, lapizAristaRuta);
 
-            float tamFuente = Math.Clamp(radio * 0.52F, 7.5F, 11.5F);
+            float tamFuente = Math.Clamp(radio * 0.56F, 7F, 10F);
             using Font fuenteNodo = new Font("Segoe UI", tamFuente, FontStyle.Bold);
             DibujarNodos(g, arbol.Raiz, posiciones, radio, fuenteNodo, rutaResaltada, nodoEncontrado);
         }
