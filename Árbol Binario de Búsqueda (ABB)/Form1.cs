@@ -127,14 +127,6 @@ namespace Árbol_Binario_de_Búsqueda__ABB_
             ActualizarVista("Ejemplo cargado (50, 30, 70, 20, 40, 60, 80).");
         }
 
-        private void btnEjecutarPruebas_Click(object? sender, EventArgs e)
-        {
-            (bool exito, string reporte) = PruebasABB.EjecutarTodas();
-            string titulo = exito ? "Pruebas aprobadas" : "Pruebas con fallos";
-            MessageBox.Show(this, reporte, titulo, MessageBoxButtons.OK, exito ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
-            ActualizarVista(exito ? "Todas las pruebas de integridad fueron aprobadas." : "Se detectaron fallos en las pruebas.");
-        }
-
         private void pbArbol_Paint(object? sender, PaintEventArgs e)
         {
             renderizador.Dibujar(e.Graphics, pbArbol.ClientSize, arbol, rutaResaltada, nodoEncontrado);

@@ -26,7 +26,6 @@
             btnEliminar = new Button();
             btnLimpiar = new Button();
             btnEjemplo = new Button();
-            btnEjecutarPruebas = new Button();
             pbArbol = new PictureBox();
             tlpResultados = new TableLayoutPanel();
             lblPreorden = new Label();
@@ -68,7 +67,6 @@
             flpControles.Controls.Add(btnEliminar);
             flpControles.Controls.Add(btnLimpiar);
             flpControles.Controls.Add(btnEjemplo);
-            flpControles.Controls.Add(btnEjecutarPruebas);
             flpControles.Dock = DockStyle.Fill;
             flpControles.Location = new Point(13, 13);
             flpControles.Name = "flpControles";
@@ -139,16 +137,6 @@
             btnEjemplo.Text = "Cargar Ejemplo";
             btnEjemplo.UseVisualStyleBackColor = true;
             btnEjemplo.Click += btnEjemplo_Click;
-
-            btnEjecutarPruebas.AutoSize = true;
-            btnEjecutarPruebas.Location = new Point(652, 3);
-            btnEjecutarPruebas.Name = "btnEjecutarPruebas";
-            btnEjecutarPruebas.Padding = new Padding(8, 2, 8, 2);
-            btnEjecutarPruebas.Size = new Size(134, 29);
-            btnEjecutarPruebas.TabIndex = 7;
-            btnEjecutarPruebas.Text = "Ejecutar Pruebas";
-            btnEjecutarPruebas.UseVisualStyleBackColor = true;
-            btnEjecutarPruebas.Click += btnEjecutarPruebas_Click;
 
             pbArbol.BackColor = Color.White;
             pbArbol.BorderStyle = BorderStyle.FixedSingle;
@@ -286,7 +274,6 @@
         private Button btnEliminar;
         private Button btnLimpiar;
         private Button btnEjemplo;
-        private Button btnEjecutarPruebas;
         private PictureBox pbArbol;
         private TableLayoutPanel tlpResultados;
         private Label lblPreorden;
